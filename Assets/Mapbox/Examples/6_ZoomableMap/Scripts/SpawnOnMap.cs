@@ -9,6 +9,7 @@
 
 	public class SpawnOnMap : MonoBehaviour
 	{
+
 		[SerializeField]
 		AbstractMap _map;
 
@@ -24,6 +25,8 @@
 		GameObject _markerPrefab;
 
 		List<GameObject> _spawnedObjects;
+		List<Vector3> pos = new List<Vector3>();
+
 
 		void Start()
 		{
@@ -43,13 +46,35 @@
 		private void Update()
 		{
 			int count = _spawnedObjects.Count;
+
+			LineRenderer l = gameObject.AddComponent<LineRenderer>();
 			for (int i = 0; i < count; i++)
 			{
 				var spawnedObject = _spawnedObjects[i];
 				var location = _locations[i];
 				spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
 				spawnedObject.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
+				//
+				l.startWidth = 1f;
+				l.endWidth = 1f;
+				pos.Add(new Vector3(spawnedObject.transform.localPosition.x, 2f, spawnedObject.transform.localPosition.z));
+				
+				l.positionCount = pos.Count;
+				
+				l.SetPositions(pos.ToArray());
+				l.useWorldSpace = true;
 			}
+
 		}
+
+
+		private void DrawLine()
+        {
+			
+			
+
+		}
+
+		
 	}
 }

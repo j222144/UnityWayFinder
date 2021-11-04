@@ -10,6 +10,15 @@ public class heightSet : MonoBehaviour
     void Start()
     {
         map = GameObject.Find("Map");
+
+
+        List<GameObject> list = new List<GameObject>();
+        for (int i = 0; i < map.transform.childCount; i++)
+        {
+            list.Add(map.transform.GetChild(i).gameObject);
+        }
+        
+
         System.Console.WriteLine(map);
     }
 
