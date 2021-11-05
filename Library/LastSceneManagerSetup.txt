@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Mapbox/Examples/1_DataExplorer/DataExplorer.unity
+- path: Assets/TafeMap.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
