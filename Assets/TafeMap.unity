@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 1676085689}
   - component: {fileID: 1676085690}
   - component: {fileID: 1676085691}
+  - component: {fileID: 1676085693}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -273,7 +274,7 @@ MonoBehaviour:
         isActive: 1
         layerSource:
           Name: Satellite
-          Id: mapbox://styles/bossnatc2010/ckvg53u8j012u15mpsy0kbryp
+          Id: mapbox://styles/bossnatc2010/ckvm35m9y0pj715mewms2z2by
           Modified: 
           UserName: 
       rasterOptions:
@@ -372,9 +373,22 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676085688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676085693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676085688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006c9f42b6d477d4eae845473a1fe3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _map: {fileID: 1676085689}
