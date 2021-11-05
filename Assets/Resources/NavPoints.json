@@ -1,0 +1,387 @@
+{
+  "type": "FeatureCollection",
+  "name": "updatedPathfindingPoints",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 20,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 18, 1, 21 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862489076904353, -31.948529402541865 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 21,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 20, 22, 23 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862600711824825, -31.948581279946087 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 22,
+        "isRoom": 1,
+        "roomNumber": "B223",
+        "connectingPoints": [ 21 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862569848052701, -31.948641694138345 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 21, 24, 25 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862705123309283, -31.948629873970294 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24,
+        "isRoom": 1,
+        "roomNumber": "B220",
+        "connectingPoints": [ 23 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862672289509135, -31.948691601514561 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 25,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 23, 26, 27 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.8628049380617, -31.948676497966495 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 26,
+        "isRoom": 1,
+        "roomNumber": "B217",
+        "connectingPoints": [ 25 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862766850853546, -31.948742165566774 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 27,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 25, 28 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862894245998092, -31.94871754021667 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 28,
+        "isRoom": 1,
+        "roomNumber": "B214",
+        "connectingPoints": [ 27 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.86286108385994, -31.948784192830956 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0,
+        "isRoom": 1,
+        "roomNumber": "Main",
+        "connectingPoints": [ 1 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862581996558731, -31.948387560525248 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 0, 2, 20 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862551461124625, -31.948431886155436 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 1, 3, 4 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862464451554246, -31.948395440637281 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "isRoom": 1,
+        "roomNumber": "B263",
+        "connectingPoints": [ 2 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862505165466416, -31.948319266220953 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 2, 5, 6 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862360696745796, -31.948348159965079 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "isRoom": 1,
+        "roomNumber": "B259",
+        "connectingPoints": [ 4 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862405022375995, -31.948282820702797 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 4, 8 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862281238949436, -31.948308759404906 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "isRoom": 1,
+        "roomNumber": "B254",
+        "connectingPoints": [ 8 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862326549593632, -31.948234883354587 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 7, 9, 6 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862289447399476, -31.948291357490831 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 8, 10, 11 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862189304309041, -31.948244733494629 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "isRoom": 1,
+        "roomNumber": "B251",
+        "connectingPoints": [ 9 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862229361545218, -31.948184319302371 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 9, 12 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862162708930924, -31.948233898340586 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 11, 13, 14 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862083907810586, -31.94834618993707 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "isRoom": 1,
+        "roomNumber": "B244",
+        "connectingPoints": [ 12 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862045163926425, -31.948408245819337 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 14,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 12, 15, 16 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862176170788985, -31.948386903849244 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "isRoom": 1,
+        "roomNumber": "B240",
+        "connectingPoints": [ 14 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862134471862802, -31.948451258097521 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 16,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 14, 17, 18 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862273687175403, -31.948431229479436 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 17,
+        "isRoom": 1,
+        "roomNumber": "B236",
+        "connectingPoints": [ 16 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862236913319265, -31.948501493811733 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 18,
+        "isRoom": 0,
+        "roomNumber": null,
+        "connectingPoints": [ 16, 19, 20 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.86237974034988, -31.948478838489635 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "isRoom": 1,
+        "roomNumber": "B232",
+        "connectingPoints": [ 18 ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 115.862336399733692, -31.948551401187945 ]
+      }
+    }
+  ]
+}
