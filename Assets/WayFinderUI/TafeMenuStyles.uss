@@ -1,0 +1,12 @@
+.button:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+Label {
+    color: rgb(255, 0, 249);
+}
+
+.button {
+    background-color: rgba(0, 0, 0, 255);
+    opacity: 1;
+}

@@ -1,0 +1,30 @@
+{
+    "UxmlGuid": "29f4b534bffe7064eae8a0fa5fef713e",
+    "UxmlPath": "Assets/WayFinderUI/OnStartupUI.uxml",
+    "CanvasX": 0,
+    "CanvasY": 0,
+    "CanvasWidth": 510,
+    "CanvasHeight": 578,
+    "MatchGameView": false,
+    "ZoomScale": 1.0,
+    "PanOffset": {
+        "x": 261.36663818359377,
+        "y": 48.83331298828125
+    },
+    "ColorModeBackgroundOpacity": 1.0,
+    "ImageModeCanvasBackgroundOpacity": 1.0,
+    "CameraModeCanvasBackgroundOpacity": 1.0,
+    "EnableCanvasBackground": false,
+    "CanvasBackgroundMode": 0,
+    "CanvasBackgroundColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 255.0
+    },
+    "CanvasBackgroundImage": {
+        "instanceID": 0
+    },
+    "CanvasBackgroundImageScaleMode": 1,
+    "CanvasBackgroundCameraName": ""
+}
