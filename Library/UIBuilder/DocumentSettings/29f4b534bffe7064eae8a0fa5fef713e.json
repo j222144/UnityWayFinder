@@ -3,13 +3,13 @@
     "UxmlPath": "Assets/WayFinderUI/OnStartupUI.uxml",
     "CanvasX": 0,
     "CanvasY": 0,
-    "CanvasWidth": 510,
-    "CanvasHeight": 578,
+    "CanvasWidth": 586,
+    "CanvasHeight": 566,
     "MatchGameView": false,
-    "ZoomScale": 1.0,
+    "ZoomScale": 0.75,
     "PanOffset": {
-        "x": 261.36663818359377,
-        "y": 48.83331298828125
+        "x": 311.51416015625,
+        "y": 77.97134399414063
     },
     "ColorModeBackgroundOpacity": 1.0,
     "ImageModeCanvasBackgroundOpacity": 1.0,

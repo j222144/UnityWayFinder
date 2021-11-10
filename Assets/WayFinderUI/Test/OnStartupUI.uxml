@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="TafeMenuStyles.uss" />
+    <ui:VisualElement style="position: absolute; height: 100%; width: 100%; align-items: center; justify-content: center;">
+        <ui:VisualElement name="MenuContainer" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; max-width: 400px; min-width: 260px; width: 90%;">
+            <ui:VisualElement name="ButtonContainer" style="position: absolute; left: 20%; top: 20%; right: 20%; bottom: 20%;">
+                <ui:Button text="View Map" display-tooltip-when-elided="true" name="ViewMapButton" class="wayfinder-button" />
+                <ui:Button text="Search Buildings" display-tooltip-when-elided="true" name="SearchBuildingButton" class="wayfinder-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

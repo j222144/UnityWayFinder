@@ -1,0 +1,2 @@
+D:\Coding\TAFE\WayFinder\UnityWayfinder\obj\Debug\Unity.UIElements.Samples.Editor.csproj.AssemblyReference.cache
+D:\Coding\TAFE\WayFinder\UnityWayfinder\obj\Debug\Unity.UIElements.Samples.Editor.csproj.CoreCompileInputs.cache

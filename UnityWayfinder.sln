@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{D7D8E800-8AA8-E20A-4AFF-21238EB6ED64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.UIElements.Samples", "Unity.UIElements.Samples.csproj", "{9DD5AA5E-C365-446E-D56A-567FC081D468}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{91F10B3E-91A8-B1C3-0315-C648E383CE25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.UIElements.Samples.Editor", "Unity.UIElements.Samples.Editor.csproj", "{168A5419-09A5-2C61-7EC5-C37794CE0304}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +19,18 @@ Global
 		{D7D8E800-8AA8-E20A-4AFF-21238EB6ED64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7D8E800-8AA8-E20A-4AFF-21238EB6ED64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7D8E800-8AA8-E20A-4AFF-21238EB6ED64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD5AA5E-C365-446E-D56A-567FC081D468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD5AA5E-C365-446E-D56A-567FC081D468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD5AA5E-C365-446E-D56A-567FC081D468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD5AA5E-C365-446E-D56A-567FC081D468}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91F10B3E-91A8-B1C3-0315-C648E383CE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91F10B3E-91A8-B1C3-0315-C648E383CE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91F10B3E-91A8-B1C3-0315-C648E383CE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91F10B3E-91A8-B1C3-0315-C648E383CE25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168A5419-09A5-2C61-7EC5-C37794CE0304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168A5419-09A5-2C61-7EC5-C37794CE0304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168A5419-09A5-2C61-7EC5-C37794CE0304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168A5419-09A5-2C61-7EC5-C37794CE0304}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

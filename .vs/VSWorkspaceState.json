@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Assets",
-    "\\Assets\\Mapbox",
-    "\\Assets\\Mapbox\\Examples",
-    "\\Assets\\Mapbox\\Examples\\Scripts"
+    ""
   ],
-  "SelectedNode": "\\Assets\\Mapbox\\Examples\\Scripts\\QuadTreeCameraMovement.cs",
+  "SelectedNode": "\\UnityWayfinder.sln",
   "PreviewInSolutionExplorer": false
 }

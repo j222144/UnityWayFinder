@@ -21,16 +21,16 @@
                         "m_BackupStyleSheet": {
                             "instanceID": 0
                         },
-                        "m_OldPath": "Assets/WayFinderUI/TafeMenuStyles.uss"
+                        "m_OldPath": "Assets/WayFinderUI/Test/TafeMenuStyles.uss"
                     }
                 ],
                 "m_VisualTreeAssetBackup": {
                     "instanceID": 0
                 },
-                "m_OpenendVisualTreeAssetOldPath": "Assets/WayFinderUI/OnStartupUI.uxml",
+                "m_OpenendVisualTreeAssetOldPath": "Assets/WayFinderUI/Test/StartSearch.uxml",
                 "m_VisualTreeAsset": {
                     "fileID": 9197481963319205126,
-                    "guid": "29f4b534bffe7064eae8a0fa5fef713e",
+                    "guid": "605b7a106270ac5418037763e9a13a8c",
                     "type": 3
                 },
                 "m_ActiveStyleSheet": {
@@ -39,17 +39,17 @@
                     "type": 3
                 },
                 "m_Settings": {
-                    "UxmlGuid": "29f4b534bffe7064eae8a0fa5fef713e",
-                    "UxmlPath": "Assets/WayFinderUI/OnStartupUI.uxml",
+                    "UxmlGuid": "605b7a106270ac5418037763e9a13a8c",
+                    "UxmlPath": "Assets/WayFinderUI/Test/StartSearch.uxml",
                     "CanvasX": 0,
                     "CanvasY": 0,
-                    "CanvasWidth": 510,
-                    "CanvasHeight": 578,
+                    "CanvasWidth": 350,
+                    "CanvasHeight": 450,
                     "MatchGameView": false,
                     "ZoomScale": 1.0,
                     "PanOffset": {
-                        "x": 261.36663818359377,
-                        "y": 48.83331298828125
+                        "x": 20.0,
+                        "y": 20.0
                     },
                     "ColorModeBackgroundOpacity": 1.0,
                     "ImageModeCanvasBackgroundOpacity": 1.0,

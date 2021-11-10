@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="TafeMenuStyles.uss" />
+    <ui:VisualElement style="position: absolute; height: 100%; width: 100%; align-items: center; justify-content: center;">
+        <ui:VisualElement name="MenuContainer" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; max-width: 400px; min-width: 260px; width: 90%;">
+            <ui:Label text="Buildings" display-tooltip-when-elided="true" style="font-size: 16px; -unity-font-style: bold; margin-top: 10px;" />
+            <ui:ListView focusable="true" name="BuildingList" show-border="false" />
+            <ui:Button text="Building 6" display-tooltip-when-elided="true" name="Building6Button" class="wayfinder-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
