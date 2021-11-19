@@ -196,7 +196,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255086813}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acd5dd987a07d074dbfa19ee61715761, type: 3}
   m_Name: 
@@ -254,6 +254,7 @@ MonoBehaviour:
   - {fileID: 2025883305}
   - {fileID: 2108816123}
   spawnOnMap: {fileID: 255086816}
+  Building6Rooms: {fileID: 2025883303}
 --- !u!1 &443376793
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2025883304}
   - component: {fileID: 2025883305}
+  - component: {fileID: 2025883306}
   m_Layer: 5
   m_Name: StartSearch
   m_TagString: Untagged
@@ -696,6 +698,18 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 605b7a106270ac5418037763e9a13a8c, type: 3}
   m_SortingOrder: 0
+--- !u!114 &2025883306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025883303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a21ad0e87536140b60a2ee56cfc655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2108816121
 GameObject:
   m_ObjectHideFlags: 0

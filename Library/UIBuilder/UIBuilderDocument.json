@@ -43,13 +43,13 @@
                     "UxmlPath": "Assets/WayFinderUI/Test/StartSearch.uxml",
                     "CanvasX": 0,
                     "CanvasY": 0,
-                    "CanvasWidth": 350,
-                    "CanvasHeight": 450,
+                    "CanvasWidth": 660,
+                    "CanvasHeight": 654,
                     "MatchGameView": false,
                     "ZoomScale": 1.0,
                     "PanOffset": {
-                        "x": 20.0,
-                        "y": 20.0
+                        "x": 328.5,
+                        "y": 26.0
                     },
                     "ColorModeBackgroundOpacity": 1.0,
                     "ImageModeCanvasBackgroundOpacity": 1.0,

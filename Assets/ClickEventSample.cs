@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -22,6 +23,9 @@ namespace Samples.Runtime.Events
         public UIDocument StartupMenu;
         public List<UIDocument> SearchMenu;
         public SpawnOnMap spawnOnMap;
+        public GameObject Building6Rooms;
+        public Func<VisualElement> makeItem { get; set; }
+        public Action<VisualElement, int> bindItem { get; set; }
 
         public void SetPanelSettings(PanelSettings newPanelSettings)
         {
@@ -77,6 +81,25 @@ namespace Samples.Runtime.Events
             {
                 case "Building6Button":
                     SearchMenu[0].rootVisualElement.style.display = DisplayStyle.None;
+                    // Creating a bunch of things to add to listview
+                    const int itemCount = 1000;
+                    var items = new List<string>(itemCount);
+                    for (int i = 1; i <= itemCount; i++)
+                        items.Add(i.ToString());
+                    // copy pasted code from https://docs.unity3d.com/Packages/com.unity.ui@1.0/api/UnityEngine.UIElements.ListView.html
+                    Func<VisualElement> makeItem = () => new Label();
+                    Action<VisualElement, int> bindItem = (e, i) => (e as Label).text = items[i];
+                    var listView = new ListView(items, 16, makeItem, bindItem);
+                    listView.selectionType = SelectionType.Multiple;
+
+                    listView.onItemsChosen += objects => Debug.Log(objects);
+                    listView.onSelectionChange += objects => Debug.Log(objects);
+
+                    listView.style.flexGrow = 1.0f;
+                    // added listview and buttons show but cant find then when inspecting code
+                    SearchMenu[1].rootVisualElement.Add(listView);
+                    SearchMenu[1].rootVisualElement.Add(button);
+                    SearchMenu[1].rootVisualElement.Add(button);
                     SearchMenu[1].rootVisualElement.style.display = DisplayStyle.Flex;
                     break;
                     

@@ -46,32 +46,23 @@ public class SpawnOnMap : MonoBehaviour
     // Update line every frame incase map moves
     private void DrawLine(string from, string to)
     {
-        LineRenderer line = GetComponent<LineRenderer>();
-        pos.Clear();
-        //line = Instantiate (line) as LineRenderer;
-        //if (gameObject.GetComponent<LineRenderer>())
-        //{
-        //	//l = gameObject.GetComponent<LineRenderer>();
-        //	Destroy(GetComponent<LineRenderer>()); // if already drawn, destroy and redraw
-        //}
-
-        //l = gameObject.AddComponent<LineRenderer>();
-        List<Feature> shortestPath = pathFinder.ShortestPathFunction(pathFinding.features, pathFinding.features.Where(point => point.properties.roomNumber == from).Single(), pathFinding.features.Where(point => point.properties.roomNumber == to).Single());
-        foreach (var feature in shortestPath)
+        if (From != null && To != null)
         {
-            Vector2d conversion = Conversions.StringToLatLon($"{feature.geometry.coordinates[1]}, {feature.geometry.coordinates[0]}");
-            Vector3 localPos = _map.GeoToWorldPosition(conversion, true);
-            pos.Add(new Vector3(localPos.x, 2f, localPos.z));
+            LineRenderer line = GetComponent<LineRenderer>();
+            pos.Clear();
+            List<Feature> shortestPath = pathFinder.ShortestPathFunction(pathFinding.features, pathFinding.features.Where(point => point.properties.roomNumber == from).Single(), pathFinding.features.Where(point => point.properties.roomNumber == to).Single());
+            foreach (var feature in shortestPath)
+            {
+                Vector2d conversion = Conversions.StringToLatLon($"{feature.geometry.coordinates[1]}, {feature.geometry.coordinates[0]}");
+                Vector3 localPos = _map.GeoToWorldPosition(conversion, true);
+                pos.Add(new Vector3(localPos.x, 2f, localPos.z));
+            }
+            line.positionCount = pos.Count;
+            line.SetPositions(pos.ToArray());
         }
-        //foreach (var location in _locations)
-        //{
-        //	Vector3 localPos = _map.GeoToWorldPosition(location, true);
-        //	//spawnedObject.transform.localPosition = _map.GeoToWorldPosition(location, true);
-        //	//transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
-        //	//
-        //	pos.Add(new Vector3(localPos.x, 2f, localPos.z));
-        //}
-        line.positionCount = pos.Count;
-        line.SetPositions(pos.ToArray());
+        else
+        {
+            pos.Clear();
+        }
     }
 }

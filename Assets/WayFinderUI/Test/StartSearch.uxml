@@ -4,8 +4,8 @@
         <ui:VisualElement name="MenuContainer" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; max-width: 400px; min-width: 260px; width: 90%;">
             <ui:Label text="Starting Location" display-tooltip-when-elided="true" style="font-size: 16px; -unity-font-style: bold; margin-top: 10px;" />
             <ui:ListView focusable="true" name="BuildingList" show-border="false" />
-            <ui:Button text="Main Entrance" display-tooltip-when-elided="true" name="Main" class="wayfinder-button" />
             <ui:Button text="B214" display-tooltip-when-elided="true" name="B214" class="wayfinder-button" />
+            <ui:Button text="Main Entrance" display-tooltip-when-elided="true" name="Main" class="wayfinder-button" />
             <ui:Button text="B220" display-tooltip-when-elided="true" name="B220" class="wayfinder-button" />
             <ui:Button text="B263" display-tooltip-when-elided="true" name="B263" class="wayfinder-button" />
             <ui:Button text="B244" display-tooltip-when-elided="true" name="B244" class="wayfinder-button" />
