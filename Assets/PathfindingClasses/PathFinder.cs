@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class PathFinder
 {
-        //ShortestPathFunction(pathFinding.features, pathFinding.features.Where(point => point.properties.roomNumber == "Main").Single(), pathFinding.features.Where(point => point.properties.roomNumber == "B214").Single());
+    //ShortestPathFunction(pathFinding.features, pathFinding.features.Where(point => point.properties.roomNumber == "Main").Single(), pathFinding.features.Where(point => point.properties.roomNumber == "B214").Single());
 
     public List<Feature> ShortestPathFunction(List<Feature> features, Feature start, Feature end)
     {

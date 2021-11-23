@@ -28,7 +28,7 @@
     margin-bottom: 5px;
     background-color: rgb(35, 31, 32);
     font-size: 14px;
-    min-height: 40px;
+    min-height: 30px;
     -unity-font-style: bold;
     align-items: center;
     justify-content: flex-start;
@@ -46,7 +46,9 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     max-width: 250px;
-    min-width: 250px;
+    min-width: 100px;
+    width: 75%;
+    height: 5%;
 }
 
 #ButtonContainer {
@@ -63,7 +65,7 @@
     background-color: rgba(126, 189, 194, 0.82);
 }
 
-#BuldingList {
+#RoomList {
     width: 90%;
     height: 90%;
     top: auto;
@@ -72,4 +74,8 @@
 
 .SearchButton {
     min-width: 100px;
+}
+
+.persistent-button {
+    max-width: 25%;
 }

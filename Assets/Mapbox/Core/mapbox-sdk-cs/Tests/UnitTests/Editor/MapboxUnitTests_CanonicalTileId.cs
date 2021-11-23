@@ -6,26 +6,26 @@
 
 namespace Mapbox.MapboxSdkCs.UnitTest
 {
-	using Mapbox.Map;
-	using Mapbox.Utils;
-	using NUnit.Framework;
+    using Mapbox.Map;
+    using Mapbox.Utils;
+    using NUnit.Framework;
 
-	[TestFixture]
-	internal class CanonicalTileIdTest
-	{
-		[Test]
-		public void ToVector2d()
-		{
-			var set = TileCover.Get(Vector2dBounds.World(), 5);
+    [TestFixture]
+    internal class CanonicalTileIdTest
+    {
+        [Test]
+        public void ToVector2d()
+        {
+            var set = TileCover.Get(Vector2dBounds.World(), 5);
 
-			foreach (var tile in set)
-			{
-				var reverse = TileCover.CoordinateToTileId(tile.ToVector2d(), 5);
+            foreach (var tile in set)
+            {
+                var reverse = TileCover.CoordinateToTileId(tile.ToVector2d(), 5);
 
-				Assert.AreEqual(tile.Z, reverse.Z);
-				Assert.AreEqual(tile.X, reverse.X);
-				Assert.AreEqual(tile.Y, reverse.Y);
-			}
-		}
-	}
+                Assert.AreEqual(tile.Z, reverse.Z);
+                Assert.AreEqual(tile.X, reverse.X);
+                Assert.AreEqual(tile.Y, reverse.Y);
+            }
+        }
+    }
 }

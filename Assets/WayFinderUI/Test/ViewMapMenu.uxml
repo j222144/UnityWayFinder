@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="TafeMenuStyles.uss" />
+    <ui:VisualElement name="Container" style="align-items: flex-start; justify-content: flex-end; bottom: 0; top: 90%; flex-direction: row; max-height: 10%;">
+        <ui:Button text="Clear Search" display-tooltip-when-elided="true" name="ClearSearchButton" class="wayfinder-button persistent-button" />
+        <ui:Button text="Search" display-tooltip-when-elided="true" name="ShowSearchButton" class="wayfinder-button persistent-button" style="justify-content: flex-end;" />
+    </ui:VisualElement>
+</ui:UXML>

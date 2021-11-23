@@ -2,9 +2,6 @@
 {
 
 
-	using System;
-
-
 #if ENABLE_WINMD_SUPPORT
 	[AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 	public class DescriptionAttribute : Attribute

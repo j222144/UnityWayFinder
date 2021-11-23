@@ -6,13 +6,13 @@
 
 namespace Mapbox.Examples.Playground
 {
-	using UnityEngine;
-	using UnityEngine.UI;
-	using Mapbox.Json;
-	using Mapbox.Utils.JsonConverters;
-	using Mapbox.Geocoding;
+    using Mapbox.Geocoding;
+    using Mapbox.Json;
+    using Mapbox.Utils.JsonConverters;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-	public class ForwardGeocoderExample : MonoBehaviour
+    public class ForwardGeocoderExample : MonoBehaviour
     {
         [SerializeField]
         ForwardGeocodeUserInput _searchLocation;

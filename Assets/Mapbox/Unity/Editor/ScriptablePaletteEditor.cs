@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
 
 [CustomEditor(typeof(ScriptablePalette))]
 public class ScriptablePaletteEditor : Editor
@@ -55,7 +53,7 @@ public class ScriptablePaletteEditor : Editor
         sp.m_valueRange = EditorGUILayout.Slider(valRangeContent, sp.m_valueRange, 0, 1);
 
         EditorGUILayout.Space();
-        
+
         if (GUILayout.Button("Generate Palette"))
         {
             sp.GeneratePalette();
@@ -63,7 +61,7 @@ public class ScriptablePaletteEditor : Editor
 
         GUILayout.Space(20);
 
-        if(sp.m_colors == null || sp.m_colors.Length == 0)
+        if (sp.m_colors == null || sp.m_colors.Length == 0)
         {
             EditorGUILayout.LabelField("No color palette defined!", EditorStyles.boldLabel);
         }

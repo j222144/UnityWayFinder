@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace KDTree
 {
@@ -201,10 +199,10 @@ namespace KDTree
             this.pPending.Insert(0, pRoot);
         }
 
-		public T Current
-		{
-			get { return _Current; }
-		}
+        public T Current
+        {
+            get { return _Current; }
+        }
 
         /// <summary>
         /// Return the distance of the current value to the search point.
@@ -221,7 +219,7 @@ namespace KDTree
         {
             get { return _Current; }
         }
-  
+
         /// <summary>
         /// Return the current value referenced by the iterator.
         /// </summary>

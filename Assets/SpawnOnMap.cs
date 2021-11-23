@@ -1,12 +1,11 @@
 ﻿
-using UnityEngine;
-using Mapbox.Utils;
 using Mapbox.Unity.Map;
-using Mapbox.Unity.MeshGeneration.Factories;
 using Mapbox.Unity.Utilities;
-using System.Collections.Generic;
+using Mapbox.Utils;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class SpawnOnMap : MonoBehaviour
 {
@@ -17,24 +16,29 @@ public class SpawnOnMap : MonoBehaviour
     List<Vector3> pos = new List<Vector3>();
     PathFinder pathFinder = new PathFinder();
 
+    public GameObject startCircle;
+    public GameObject endCircle;
 
     public string To { get; set; }
     public string From { get; set; }
     // Json
     TextAsset targetFile;
     string myJson;
-    Root pathFinding;
+    public Root pathFinding { get; set; }
     void Start()
     {
+        startCircle.SetActive(false);
+        endCircle.SetActive(false);
         // Assign JSON
         targetFile = Resources.Load<TextAsset>("NavPoints");
         myJson = targetFile.text;
         pathFinding = JsonConvert.DeserializeObject<Root>(myJson);
         // Create LineRenderer
         LineRenderer line = gameObject.AddComponent<LineRenderer>();
+        
         line.material = new Material(Shader.Find("Sprites/Default"));
-        line.startWidth = 0.5f;
-        line.endWidth = 0.5f;
+        line.startWidth = 0.7f;
+        line.endWidth = 0.7f;
     }
 
     private void Update()
@@ -46,9 +50,16 @@ public class SpawnOnMap : MonoBehaviour
     // Update line every frame incase map moves
     private void DrawLine(string from, string to)
     {
-        if (From != null && To != null)
+        LineRenderer line = GetComponent<LineRenderer>();
+        if (From == null || To == null)
         {
-            LineRenderer line = GetComponent<LineRenderer>();
+            startCircle.SetActive(false);
+            endCircle.SetActive(false);
+            pos.Clear();
+            line.positionCount = pos.Count;
+        }
+        else
+        {
             pos.Clear();
             List<Feature> shortestPath = pathFinder.ShortestPathFunction(pathFinding.features, pathFinding.features.Where(point => point.properties.roomNumber == from).Single(), pathFinding.features.Where(point => point.properties.roomNumber == to).Single());
             foreach (var feature in shortestPath)
@@ -59,10 +70,18 @@ public class SpawnOnMap : MonoBehaviour
             }
             line.positionCount = pos.Count;
             line.SetPositions(pos.ToArray());
+            DrawCircles(shortestPath[0], shortestPath[shortestPath.Count - 1]);
         }
-        else
-        {
-            pos.Clear();
-        }
+    }
+    private void DrawCircles(Feature end, Feature start)
+    {
+        startCircle.SetActive(true);
+        endCircle.SetActive(true);
+        Vector2d conversionStart = Conversions.StringToLatLon($"{start.geometry.coordinates[1]}, {start.geometry.coordinates[0]}");
+        Vector2d conversionEnd = Conversions.StringToLatLon($"{end.geometry.coordinates[1]}, {end.geometry.coordinates[0]}");
+        Vector3 localPosStart = _map.GeoToWorldPosition(conversionStart, true);
+        Vector3 localPosEnd = _map.GeoToWorldPosition(conversionEnd, true);
+        startCircle.transform.position = new Vector3(localPosStart.x, 3f, localPosStart.z);
+        endCircle.transform.position = new Vector3(localPosEnd.x, 3f, localPosEnd.z);
     }
 }

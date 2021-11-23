@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class testScript : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -15,6 +13,6 @@ public class testScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

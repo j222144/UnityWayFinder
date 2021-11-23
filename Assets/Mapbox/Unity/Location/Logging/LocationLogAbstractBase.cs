@@ -2,113 +2,113 @@ namespace Mapbox.Unity.Location
 {
 
 
-	using System;
-	using System.ComponentModel;
-	using System.Globalization;
-	using Mapbox.VectorTile.ExtensionMethods;
+    using Mapbox.VectorTile.ExtensionMethods;
+    using System;
+    using System.ComponentModel;
+    using System.Globalization;
 
 
-	/// <summary>
-	/// Base class for reading/writing location logs
-	/// </summary>
-	public abstract class LocationLogAbstractBase
-	{
+    /// <summary>
+    /// Base class for reading/writing location logs
+    /// </summary>
+    public abstract class LocationLogAbstractBase
+    {
 
 
-		public readonly string Delimiter = ";";
-		protected readonly CultureInfo _invariantCulture = CultureInfo.InvariantCulture;
+        public readonly string Delimiter = ";";
+        protected readonly CultureInfo _invariantCulture = CultureInfo.InvariantCulture;
 
 
-		public enum LogfileColumns
-		{
+        public enum LogfileColumns
+        {
 #if !ENABLE_WINMD_SUPPORT
-			[Description("location service enabled")]
+            [Description("location service enabled")]
 #endif
-			LocationServiceEnabled = 0,
+            LocationServiceEnabled = 0,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("location service intializing")]
+            [Description("location service intializing")]
 #endif
-			LocationServiceInitializing = 1,
+            LocationServiceInitializing = 1,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("location updated")]
+            [Description("location updated")]
 #endif
-			LocationUpdated = 2,
+            LocationUpdated = 2,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("userheading updated")]
+            [Description("userheading updated")]
 #endif
-			UserHeadingUpdated = 3,
+            UserHeadingUpdated = 3,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("location provider")]
+            [Description("location provider")]
 #endif
-			LocationProvider = 4,
+            LocationProvider = 4,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("location provider class")]
+            [Description("location provider class")]
 #endif
-			LocationProviderClass = 5,
+            LocationProviderClass = 5,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("time device [utc]")]
+            [Description("time device [utc]")]
 #endif
-			UtcTimeDevice = 6,
+            UtcTimeDevice = 6,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("time location [utc]")]
+            [Description("time location [utc]")]
 #endif
-			UtcTimeOfLocation = 7,
+            UtcTimeOfLocation = 7,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("latitude")]
+            [Description("latitude")]
 #endif
-			Latitude = 8,
+            Latitude = 8,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("longitude")]
+            [Description("longitude")]
 #endif
-			Longitude = 9,
+            Longitude = 9,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("accuracy [m]")]
+            [Description("accuracy [m]")]
 #endif
-			Accuracy = 10,
+            Accuracy = 10,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("user heading [°]")]
+            [Description("user heading [°]")]
 #endif
-			UserHeading = 11,
+            UserHeading = 11,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("device orientation [°]")]
+            [Description("device orientation [°]")]
 #endif
-			DeviceOrientation = 12,
+            DeviceOrientation = 12,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("speed [km/h]")]
+            [Description("speed [km/h]")]
 #endif
-			Speed = 13,
+            Speed = 13,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("has gps fix")]
+            [Description("has gps fix")]
 #endif
-			HasGpsFix = 14,
+            HasGpsFix = 14,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("satellites used")]
+            [Description("satellites used")]
 #endif
-			SatellitesUsed = 15,
+            SatellitesUsed = 15,
 #if !ENABLE_WINMD_SUPPORT
-			[Description("satellites in view")]
+            [Description("satellites in view")]
 #endif
-			SatellitesInView = 16
-		}
+            SatellitesInView = 16
+        }
 
 
-		public string[] HeaderNames
-		{
-			get
-			{
-				Type enumType = typeof(LogfileColumns);
-				Array arrEnumVals = Enum.GetValues(enumType);
-				string[] hdrs = new string[arrEnumVals.Length];
-				for (int i = 0; i < arrEnumVals.Length; i++)
-				{
-					hdrs[i] = ((LogfileColumns)Enum.Parse(enumType, arrEnumVals.GetValue(i).ToString())).Description();
+        public string[] HeaderNames
+        {
+            get
+            {
+                Type enumType = typeof(LogfileColumns);
+                Array arrEnumVals = Enum.GetValues(enumType);
+                string[] hdrs = new string[arrEnumVals.Length];
+                for (int i = 0; i < arrEnumVals.Length; i++)
+                {
+                    hdrs[i] = ((LogfileColumns)Enum.Parse(enumType, arrEnumVals.GetValue(i).ToString())).Description();
 
-				}
-				return hdrs;
-			}
-		}
+                }
+                return hdrs;
+            }
+        }
 
 
 
-	}
+    }
 }

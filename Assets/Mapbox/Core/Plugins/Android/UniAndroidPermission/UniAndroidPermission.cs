@@ -73,7 +73,8 @@ public class UniAndroidPermission : MonoBehaviour
         ResetAllCallBacks();
     }
 
-    private void ResetAllCallBacks(){
+    private void ResetAllCallBacks()
+    {
         onAllowCallback = null;
         onDenyCallback = null;
         onDenyAndNeverAskAgainCallback = null;

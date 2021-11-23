@@ -7,76 +7,76 @@
 namespace Mapbox.MapboxSdkCs.UnitTest
 {
 
-	using System.Collections.Generic;
-	using Mapbox.Map;
+    using Mapbox.Map;
+    using System.Collections.Generic;
 
 
-	internal static class Utils
-	{
-		internal class VectorMapObserver : Mapbox.Utils.IObserver<VectorTile>
-		{
-			private List<VectorTile> tiles = new List<VectorTile>();
+    internal static class Utils
+    {
+        internal class VectorMapObserver : Mapbox.Utils.IObserver<VectorTile>
+        {
+            private List<VectorTile> tiles = new List<VectorTile>();
 
-			public List<VectorTile> Tiles
-			{
-				get
-				{
-					return tiles;
-				}
-			}
+            public List<VectorTile> Tiles
+            {
+                get
+                {
+                    return tiles;
+                }
+            }
 
-			public void OnNext(VectorTile tile)
-			{
-				if (tile.CurrentState == Tile.State.Loaded)
-				{
-					tiles.Add(tile);
-				}
-			}
-		}
+            public void OnNext(VectorTile tile)
+            {
+                if (tile.CurrentState == Tile.State.Loaded)
+                {
+                    tiles.Add(tile);
+                }
+            }
+        }
 
-		internal class RasterMapObserver : Mapbox.Utils.IObserver<RasterTile>
-		{
-			private List<byte[]> tiles = new List<byte[]>();
+        internal class RasterMapObserver : Mapbox.Utils.IObserver<RasterTile>
+        {
+            private List<byte[]> tiles = new List<byte[]>();
 
-			public List<byte[]> Tiles
-			{
-				get
-				{
-					return tiles;
-				}
-			}
+            public List<byte[]> Tiles
+            {
+                get
+                {
+                    return tiles;
+                }
+            }
 
-			public void OnNext(RasterTile tile)
-			{
-				if (tile.CurrentState == Tile.State.Loaded && !tile.HasError)
-				{
-					tiles.Add(tile.Data);
-				}
-			}
-		}
+            public void OnNext(RasterTile tile)
+            {
+                if (tile.CurrentState == Tile.State.Loaded && !tile.HasError)
+                {
+                    tiles.Add(tile.Data);
+                }
+            }
+        }
 
-		internal class ClassicRasterMapObserver : Mapbox.Utils.IObserver<ClassicRasterTile>
-		{
-			private List<byte[]> tiles = new List<byte[]>();
+        internal class ClassicRasterMapObserver : Mapbox.Utils.IObserver<ClassicRasterTile>
+        {
+            private List<byte[]> tiles = new List<byte[]>();
 
-			public List<byte[]> Tiles
-			{
-				get
-				{
-					return tiles;
-				}
-			}
+            public List<byte[]> Tiles
+            {
+                get
+                {
+                    return tiles;
+                }
+            }
 
-			public void OnNext(ClassicRasterTile tile)
-			{
-				if (tile.CurrentState == Tile.State.Loaded && !tile.HasError)
-				{
-					tiles.Add(tile.Data);
-				}
-			}
-		}
+            public void OnNext(ClassicRasterTile tile)
+            {
+                if (tile.CurrentState == Tile.State.Loaded && !tile.HasError)
+                {
+                    tiles.Add(tile.Data);
+                }
+            }
+        }
 
 
 
-	}
+    }
 }

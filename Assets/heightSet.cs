@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ public class heightSet : MonoBehaviour
         {
             list.Add(map.transform.GetChild(i).gameObject);
         }
-        
+
 
         System.Console.WriteLine(map);
     }

@@ -20,9 +20,9 @@
 
 namespace Mapbox.Unity.Utilities
 {
-    using UnityEngine;
     using System.Collections;
     using System.Collections.Generic;
+    using UnityEngine;
 
     /// <summary>
     /// Helper class for running co-routines without having to inherit from MonoBehavior.

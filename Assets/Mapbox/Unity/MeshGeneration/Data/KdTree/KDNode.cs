@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace KDTree
 {
@@ -76,8 +73,8 @@ namespace KDTree
             this.bSinglePoint = true;
 
             // Setup leaf elements.
-            this.tPoints = new double[iBucketCapacity+1][];
-            this.tData = new T[iBucketCapacity+1];
+            this.tPoints = new double[iBucketCapacity + 1][];
+            this.tData = new T[iBucketCapacity + 1];
         }
         #endregion
 
@@ -176,7 +173,7 @@ namespace KDTree
         private void ExtendBounds(double[] tPoint)
         {
             // If we don't have bounds, create them using the new point then bail.
-            if (tMinBound == null) 
+            if (tMinBound == null)
             {
                 tMinBound = new double[iDimensions];
                 tMaxBound = new double[iDimensions];
@@ -192,7 +189,7 @@ namespace KDTree
                 {
                     if (!Double.IsNaN(tMinBound[i]) || !Double.IsNaN(tMaxBound[i]))
                         bSinglePoint = false;
-                    
+
                     tMinBound[i] = Double.NaN;
                     tMaxBound[i] = Double.NaN;
                 }
@@ -213,7 +210,7 @@ namespace KDTree
         /// Double the capacity of this leaf.
         /// </summary>
         private void IncreaseLeafCapacity()
-        {   
+        {
             Array.Resize<double[]>(ref tPoints, tPoints.Length * 2);
             Array.Resize<T>(ref tData, tData.Length * 2);
         }
@@ -256,7 +253,7 @@ namespace KDTree
                 fSplitValue = Double.MaxValue;
             else if (fSplitValue == Double.NegativeInfinity)
                 fSplitValue = Double.MinValue;
-            
+
             // Don't let the split value be the same as the upper value as
             // can happen due to rounding errors!
             if (fSplitValue == tMaxBound[iSplitDimension])
@@ -274,7 +271,7 @@ namespace KDTree
         {
             // Create the new children.
             pRight = new KDNode<T>(iDimensions, iBucketCapacity);
-            pLeft  = new KDNode<T>(iDimensions, iBucketCapacity);
+            pLeft = new KDNode<T>(iDimensions, iBucketCapacity);
 
             // Move each item in this leaf into the children.
             for (int i = 0; i < Size; ++i)

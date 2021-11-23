@@ -1,232 +1,232 @@
 namespace Mapbox.Unity.Map
 {
-	using UnityEngine;
-	using System.Collections.Generic;
-	using UnityEditor;
-	using Mapbox.Editor;
-	using UnityEditor.IMGUI.Controls;
-	using System.Linq;
+    using Mapbox.Editor;
+    using System.Collections.Generic;
+    using System.Linq;
+    using UnityEditor;
+    using UnityEditor.IMGUI.Controls;
+    using UnityEngine;
 
-	public class PointsOfInterestSubLayerPropertiesDrawer
-	{
-		string objectId = "";
-		static float _lineHeight = EditorGUIUtility.singleLineHeight;
+    public class PointsOfInterestSubLayerPropertiesDrawer
+    {
+        string objectId = "";
+        static float _lineHeight = EditorGUIUtility.singleLineHeight;
 
-		FeatureSubLayerTreeView layerTreeView;
-		IList<int> selectedLayers = new List<int>();
+        FeatureSubLayerTreeView layerTreeView;
+        IList<int> selectedLayers = new List<int>();
 
-		private TreeModel<FeatureTreeElement> treeModel;
-		[SerializeField]
-		TreeViewState m_TreeViewState;
+        private TreeModel<FeatureTreeElement> treeModel;
+        [SerializeField]
+        TreeViewState m_TreeViewState;
 
-		[SerializeField]
-		MultiColumnHeaderState m_MultiColumnHeaderState;
+        [SerializeField]
+        MultiColumnHeaderState m_MultiColumnHeaderState;
 
-		bool m_Initialized = false;
-		public bool isLayerAdded = false;
+        bool m_Initialized = false;
+        public bool isLayerAdded = false;
 
-		int SelectionIndex
-		{
-			get
-			{
-				return EditorPrefs.GetInt(objectId + "LocationPrefabsLayerProperties_selectionIndex");
-			}
-			set
-			{
-				EditorPrefs.SetInt(objectId + "LocationPrefabsLayerProperties_selectionIndex", value);
-			}
-		}
+        int SelectionIndex
+        {
+            get
+            {
+                return EditorPrefs.GetInt(objectId + "LocationPrefabsLayerProperties_selectionIndex");
+            }
+            set
+            {
+                EditorPrefs.SetInt(objectId + "LocationPrefabsLayerProperties_selectionIndex", value);
+            }
+        }
 
-		public void DrawUI(SerializedProperty property)
-		{
-			objectId = property.serializedObject.targetObject.GetInstanceID().ToString();
-			var prefabItemArray = property.FindPropertyRelative("locationPrefabList");
-			var layersRect = EditorGUILayout.GetControlRect(GUILayout.MinHeight(Mathf.Max(prefabItemArray.arraySize + 1, 1) * _lineHeight + MultiColumnHeader.DefaultGUI.defaultHeight),
-															GUILayout.MaxHeight((prefabItemArray.arraySize + 1) * _lineHeight + MultiColumnHeader.DefaultGUI.defaultHeight));
+        public void DrawUI(SerializedProperty property)
+        {
+            objectId = property.serializedObject.targetObject.GetInstanceID().ToString();
+            var prefabItemArray = property.FindPropertyRelative("locationPrefabList");
+            var layersRect = EditorGUILayout.GetControlRect(GUILayout.MinHeight(Mathf.Max(prefabItemArray.arraySize + 1, 1) * _lineHeight + MultiColumnHeader.DefaultGUI.defaultHeight),
+                                                            GUILayout.MaxHeight((prefabItemArray.arraySize + 1) * _lineHeight + MultiColumnHeader.DefaultGUI.defaultHeight));
 
-			if (!m_Initialized)
-			{
-				bool firstInit = m_MultiColumnHeaderState == null;
-				var headerState = FeatureSubLayerTreeView.CreateDefaultMultiColumnHeaderState();
-				if (MultiColumnHeaderState.CanOverwriteSerializedFields(m_MultiColumnHeaderState, headerState))
-				{
-					MultiColumnHeaderState.OverwriteSerializedFields(m_MultiColumnHeaderState, headerState);
-				}
-				m_MultiColumnHeaderState = headerState;
+            if (!m_Initialized)
+            {
+                bool firstInit = m_MultiColumnHeaderState == null;
+                var headerState = FeatureSubLayerTreeView.CreateDefaultMultiColumnHeaderState();
+                if (MultiColumnHeaderState.CanOverwriteSerializedFields(m_MultiColumnHeaderState, headerState))
+                {
+                    MultiColumnHeaderState.OverwriteSerializedFields(m_MultiColumnHeaderState, headerState);
+                }
+                m_MultiColumnHeaderState = headerState;
 
-				var multiColumnHeader = new FeatureSectionMultiColumnHeader(headerState);
+                var multiColumnHeader = new FeatureSectionMultiColumnHeader(headerState);
 
-				if (firstInit)
-				{
-					multiColumnHeader.ResizeToFit();
-				}
+                if (firstInit)
+                {
+                    multiColumnHeader.ResizeToFit();
+                }
 
-				treeModel = new TreeModel<FeatureTreeElement>(GetData(prefabItemArray));
-				if (m_TreeViewState == null)
-				{
-					m_TreeViewState = new TreeViewState();
-				}
+                treeModel = new TreeModel<FeatureTreeElement>(GetData(prefabItemArray));
+                if (m_TreeViewState == null)
+                {
+                    m_TreeViewState = new TreeViewState();
+                }
 
-				if (layerTreeView == null)
-				{
-					layerTreeView = new FeatureSubLayerTreeView(m_TreeViewState, multiColumnHeader, treeModel, FeatureSubLayerTreeView.uniqueIdPoI);
-				}
-				layerTreeView.multiColumnHeader = multiColumnHeader;
-				m_Initialized = true;
-			}
-
-
-			layerTreeView.Layers = prefabItemArray;
-			layerTreeView.Reload();
-			layerTreeView.OnGUI(layersRect);
-
-			if (layerTreeView.hasChanged)
-			{
-				EditorHelper.CheckForModifiedProperty(property);
-				layerTreeView.hasChanged = false;
-			}
-
-			selectedLayers = layerTreeView.GetSelection();
-			//if there are selected elements, set the selection index at the first element.
-			//if not, use the Selection index to persist the selection at the right index.
-			if (selectedLayers.Count > 0)
-			{
-				//ensure that selectedLayers[0] isn't out of bounds
-				if (selectedLayers[0] - FeatureSubLayerTreeView.uniqueIdPoI > prefabItemArray.arraySize - 1)
-				{
-					selectedLayers[0] = prefabItemArray.arraySize - 1 + FeatureSubLayerTreeView.uniqueIdPoI;
-				}
-
-				SelectionIndex = selectedLayers[0];
-
-			}
-			else
-			{
-				selectedLayers = new int[1] { SelectionIndex };
-				if (SelectionIndex > 0 && (SelectionIndex - FeatureSubLayerTreeView.uniqueIdPoI <= prefabItemArray.arraySize - 1))
-				{
-					layerTreeView.SetSelection(selectedLayers);
-				}
-			}
+                if (layerTreeView == null)
+                {
+                    layerTreeView = new FeatureSubLayerTreeView(m_TreeViewState, multiColumnHeader, treeModel, FeatureSubLayerTreeView.uniqueIdPoI);
+                }
+                layerTreeView.multiColumnHeader = multiColumnHeader;
+                m_Initialized = true;
+            }
 
 
-			GUILayout.Space(EditorGUIUtility.singleLineHeight);
-			EditorGUILayout.BeginHorizontal();
+            layerTreeView.Layers = prefabItemArray;
+            layerTreeView.Reload();
+            layerTreeView.OnGUI(layersRect);
 
-			if (GUILayout.Button(new GUIContent("Add Layer"), (GUIStyle)"minibuttonleft"))
-			{
-				prefabItemArray.arraySize++;
+            if (layerTreeView.hasChanged)
+            {
+                EditorHelper.CheckForModifiedProperty(property);
+                layerTreeView.hasChanged = false;
+            }
 
-				var prefabItem = prefabItemArray.GetArrayElementAtIndex(prefabItemArray.arraySize - 1);
-				var prefabItemName = prefabItem.FindPropertyRelative("coreOptions.sublayerName");
+            selectedLayers = layerTreeView.GetSelection();
+            //if there are selected elements, set the selection index at the first element.
+            //if not, use the Selection index to persist the selection at the right index.
+            if (selectedLayers.Count > 0)
+            {
+                //ensure that selectedLayers[0] isn't out of bounds
+                if (selectedLayers[0] - FeatureSubLayerTreeView.uniqueIdPoI > prefabItemArray.arraySize - 1)
+                {
+                    selectedLayers[0] = prefabItemArray.arraySize - 1 + FeatureSubLayerTreeView.uniqueIdPoI;
+                }
 
-				prefabItemName.stringValue = "New Location";
+                SelectionIndex = selectedLayers[0];
 
-				// Set defaults here because SerializedProperty copies the previous element.
-				prefabItem.FindPropertyRelative("coreOptions.isActive").boolValue = true;
-				prefabItem.FindPropertyRelative("coreOptions.snapToTerrain").boolValue = true;
-				prefabItem.FindPropertyRelative("presetFeatureType").enumValueIndex = (int)PresetFeatureType.Points;
-				var categories = prefabItem.FindPropertyRelative("categories");
-				categories.intValue = (int)(LocationPrefabCategories.AnyCategory);//To select any category option
+            }
+            else
+            {
+                selectedLayers = new int[1] { SelectionIndex };
+                if (SelectionIndex > 0 && (SelectionIndex - FeatureSubLayerTreeView.uniqueIdPoI <= prefabItemArray.arraySize - 1))
+                {
+                    layerTreeView.SetSelection(selectedLayers);
+                }
+            }
 
-				var density = prefabItem.FindPropertyRelative("density");
-				density.intValue = 15;//To select all locations option
 
-				//Refreshing the tree
-				layerTreeView.Layers = prefabItemArray;
-				layerTreeView.AddElementToTree(prefabItem);
-				layerTreeView.Reload();
+            GUILayout.Space(EditorGUIUtility.singleLineHeight);
+            EditorGUILayout.BeginHorizontal();
 
-				selectedLayers = new int[1] { prefabItemArray.arraySize - 1 };
-				layerTreeView.SetSelection(selectedLayers);
+            if (GUILayout.Button(new GUIContent("Add Layer"), (GUIStyle)"minibuttonleft"))
+            {
+                prefabItemArray.arraySize++;
 
-				if (EditorHelper.DidModifyProperty(property))
-				{
-					isLayerAdded = true;
-				}
-			}
+                var prefabItem = prefabItemArray.GetArrayElementAtIndex(prefabItemArray.arraySize - 1);
+                var prefabItemName = prefabItem.FindPropertyRelative("coreOptions.sublayerName");
 
-			if (GUILayout.Button(new GUIContent("Remove Selected"), (GUIStyle)"minibuttonright"))
-			{
-				foreach (var index in selectedLayers.OrderByDescending(i => i))
-				{
-					if (layerTreeView != null)
-					{
-						var poiSubLayer = prefabItemArray.GetArrayElementAtIndex(index - FeatureSubLayerTreeView.uniqueIdPoI);
+                prefabItemName.stringValue = "New Location";
 
-						VectorLayerProperties vectorLayerProperties = (VectorLayerProperties)EditorHelper.GetTargetObjectOfProperty(property);
-						PrefabItemOptions poiSubLayerProperties = (PrefabItemOptions)EditorHelper.GetTargetObjectOfProperty(poiSubLayer);
+                // Set defaults here because SerializedProperty copies the previous element.
+                prefabItem.FindPropertyRelative("coreOptions.isActive").boolValue = true;
+                prefabItem.FindPropertyRelative("coreOptions.snapToTerrain").boolValue = true;
+                prefabItem.FindPropertyRelative("presetFeatureType").enumValueIndex = (int)PresetFeatureType.Points;
+                var categories = prefabItem.FindPropertyRelative("categories");
+                categories.intValue = (int)(LocationPrefabCategories.AnyCategory);//To select any category option
 
-						vectorLayerProperties.OnSubLayerPropertyRemoved(new VectorLayerUpdateArgs { property = poiSubLayerProperties });
+                var density = prefabItem.FindPropertyRelative("density");
+                density.intValue = 15;//To select all locations option
 
-						layerTreeView.RemoveItemFromTree(index);
-						prefabItemArray.DeleteArrayElementAtIndex(index - FeatureSubLayerTreeView.uniqueIdPoI);
-						layerTreeView.treeModel.SetData(GetData(prefabItemArray));
-					}
-				}
-				selectedLayers = new int[0];
-				layerTreeView.SetSelection(selectedLayers);
-			}
+                //Refreshing the tree
+                layerTreeView.Layers = prefabItemArray;
+                layerTreeView.AddElementToTree(prefabItem);
+                layerTreeView.Reload();
 
-			EditorGUILayout.EndHorizontal();
+                selectedLayers = new int[1] { prefabItemArray.arraySize - 1 };
+                layerTreeView.SetSelection(selectedLayers);
 
-			if (selectedLayers.Count == 1 && prefabItemArray.arraySize != 0 && selectedLayers[0] - FeatureSubLayerTreeView.uniqueIdPoI >= 0)
-			{
-				//ensure that selectedLayers[0] isn't out of bounds
-				if (selectedLayers[0] - FeatureSubLayerTreeView.uniqueIdPoI > prefabItemArray.arraySize - 1)
-				{
-					selectedLayers[0] = prefabItemArray.arraySize - 1 + FeatureSubLayerTreeView.uniqueIdPoI;
-				}
-				SelectionIndex = selectedLayers[0];
+                if (EditorHelper.DidModifyProperty(property))
+                {
+                    isLayerAdded = true;
+                }
+            }
 
-				var layerProperty = prefabItemArray.GetArrayElementAtIndex(SelectionIndex - FeatureSubLayerTreeView.uniqueIdPoI);
+            if (GUILayout.Button(new GUIContent("Remove Selected"), (GUIStyle)"minibuttonright"))
+            {
+                foreach (var index in selectedLayers.OrderByDescending(i => i))
+                {
+                    if (layerTreeView != null)
+                    {
+                        var poiSubLayer = prefabItemArray.GetArrayElementAtIndex(index - FeatureSubLayerTreeView.uniqueIdPoI);
 
-				layerProperty.isExpanded = true;
-				var subLayerCoreOptions = layerProperty.FindPropertyRelative("coreOptions");
-				bool isLayerActive = subLayerCoreOptions.FindPropertyRelative("isActive").boolValue;
-				if (!isLayerActive)
-				{
-					GUI.enabled = false;
-				}
-				DrawLayerLocationPrefabProperties(layerProperty, property);
-				if (!isLayerActive)
-				{
-					GUI.enabled = true;
-				}
-			}
-			else
-			{
-				GUILayout.Space(15);
-				GUILayout.Label("Select a visualizer to see properties");
-			}
-		}
+                        VectorLayerProperties vectorLayerProperties = (VectorLayerProperties)EditorHelper.GetTargetObjectOfProperty(property);
+                        PrefabItemOptions poiSubLayerProperties = (PrefabItemOptions)EditorHelper.GetTargetObjectOfProperty(poiSubLayer);
 
-		void DrawLayerLocationPrefabProperties(SerializedProperty layerProperty, SerializedProperty property)
-		{
-			EditorGUILayout.PropertyField(layerProperty);
-		}
+                        vectorLayerProperties.OnSubLayerPropertyRemoved(new VectorLayerUpdateArgs { property = poiSubLayerProperties });
 
-		IList<FeatureTreeElement> GetData(SerializedProperty subLayerArray)
-		{
-			List<FeatureTreeElement> elements = new List<FeatureTreeElement>();
-			string name = string.Empty;
-			string type = string.Empty;
-			int id = 0;
-			var root = new FeatureTreeElement("Root", -1, 0);
-			elements.Add(root);
-			for (int i = 0; i < subLayerArray.arraySize; i++)
-			{
-				var subLayer = subLayerArray.GetArrayElementAtIndex(i);
-				name = subLayer.FindPropertyRelative("coreOptions.sublayerName").stringValue;
-				id = i + FeatureSubLayerTreeView.uniqueIdPoI;
-				type = PresetFeatureType.Points.ToString();
-				FeatureTreeElement element = new FeatureTreeElement(name, 0, id);
-				element.Name = name;
-				element.name = name;
-				element.Type = type;
-				elements.Add(element);
-			}
-			return elements;
-		}
-	}
+                        layerTreeView.RemoveItemFromTree(index);
+                        prefabItemArray.DeleteArrayElementAtIndex(index - FeatureSubLayerTreeView.uniqueIdPoI);
+                        layerTreeView.treeModel.SetData(GetData(prefabItemArray));
+                    }
+                }
+                selectedLayers = new int[0];
+                layerTreeView.SetSelection(selectedLayers);
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            if (selectedLayers.Count == 1 && prefabItemArray.arraySize != 0 && selectedLayers[0] - FeatureSubLayerTreeView.uniqueIdPoI >= 0)
+            {
+                //ensure that selectedLayers[0] isn't out of bounds
+                if (selectedLayers[0] - FeatureSubLayerTreeView.uniqueIdPoI > prefabItemArray.arraySize - 1)
+                {
+                    selectedLayers[0] = prefabItemArray.arraySize - 1 + FeatureSubLayerTreeView.uniqueIdPoI;
+                }
+                SelectionIndex = selectedLayers[0];
+
+                var layerProperty = prefabItemArray.GetArrayElementAtIndex(SelectionIndex - FeatureSubLayerTreeView.uniqueIdPoI);
+
+                layerProperty.isExpanded = true;
+                var subLayerCoreOptions = layerProperty.FindPropertyRelative("coreOptions");
+                bool isLayerActive = subLayerCoreOptions.FindPropertyRelative("isActive").boolValue;
+                if (!isLayerActive)
+                {
+                    GUI.enabled = false;
+                }
+                DrawLayerLocationPrefabProperties(layerProperty, property);
+                if (!isLayerActive)
+                {
+                    GUI.enabled = true;
+                }
+            }
+            else
+            {
+                GUILayout.Space(15);
+                GUILayout.Label("Select a visualizer to see properties");
+            }
+        }
+
+        void DrawLayerLocationPrefabProperties(SerializedProperty layerProperty, SerializedProperty property)
+        {
+            EditorGUILayout.PropertyField(layerProperty);
+        }
+
+        IList<FeatureTreeElement> GetData(SerializedProperty subLayerArray)
+        {
+            List<FeatureTreeElement> elements = new List<FeatureTreeElement>();
+            string name = string.Empty;
+            string type = string.Empty;
+            int id = 0;
+            var root = new FeatureTreeElement("Root", -1, 0);
+            elements.Add(root);
+            for (int i = 0; i < subLayerArray.arraySize; i++)
+            {
+                var subLayer = subLayerArray.GetArrayElementAtIndex(i);
+                name = subLayer.FindPropertyRelative("coreOptions.sublayerName").stringValue;
+                id = i + FeatureSubLayerTreeView.uniqueIdPoI;
+                type = PresetFeatureType.Points.ToString();
+                FeatureTreeElement element = new FeatureTreeElement(name, 0, id);
+                element.Name = name;
+                element.name = name;
+                element.Type = type;
+                elements.Add(element);
+            }
+            return elements;
+        }
+    }
 }

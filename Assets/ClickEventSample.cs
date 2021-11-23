@@ -1,8 +1,8 @@
+//using Serilog;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
 
 namespace Samples.Runtime.Events
 {
@@ -19,11 +19,10 @@ namespace Samples.Runtime.Events
         [SerializeField] private PanelSettings panelSettings = default;
         [SerializeField] private StyleSheet styleSheet = default;
 
-        private Button ViewMapButton;
         public UIDocument StartupMenu;
         public List<UIDocument> SearchMenu;
+        public UIDocument ViewMapMenu;
         public SpawnOnMap spawnOnMap;
-        public GameObject Building6Rooms;
         public Func<VisualElement> makeItem { get; set; }
         public Action<VisualElement, int> bindItem { get; set; }
 
@@ -35,7 +34,12 @@ namespace Samples.Runtime.Events
 
         void Awake()
         {
-            StartupMenu.panelSettings = panelSettings;
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Debug()
+            //    .WriteTo.Console()
+            //    .WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day)
+            //    .CreateLogger();
+            //StartupMenu.panelSettings = panelSettings;
         }
 
         void OnEnable()
@@ -47,7 +51,7 @@ namespace Samples.Runtime.Events
         {
             var root = doc.rootVisualElement;
 
-            ViewMapButton = root.Q<Button>("ViewMapButton");
+            Button ViewMapButton = root.Q<Button>("ViewMapButton");
             Button SearchBuildingbutton = root.Q<Button>("SearchBuildingButton");
             ViewMapButton.clicked += ClickViewMapButton;
             SearchBuildingbutton.clicked += ClickSearchButton;
@@ -57,17 +61,33 @@ namespace Samples.Runtime.Events
             {
                 menu.rootVisualElement.style.display = DisplayStyle.None;
             }
+            ViewMapMenu.rootVisualElement.style.display = DisplayStyle.None;
         }
 
         private void ClickViewMapButton()
         {
+            var root = ViewMapMenu.rootVisualElement;
             StartupMenu.rootVisualElement.style.display = DisplayStyle.None;
+            root.style.display = DisplayStyle.Flex;
+            Button showSearchButton = root.Q<Button>("ShowSearchButton");
+            Button clearSearchButton = root.Q<Button>("ClearSearchButton");
+            showSearchButton.clicked += ClickSearchButton;
+            clearSearchButton.clicked += ClickClearSearchButton;
+        }
+        private void ClickClearSearchButton()
+        {
+            spawnOnMap.To = null;
+            spawnOnMap.From = null;
+            //Log.Information($"To changed to {spawnOnMap.To}, From changed to {spawnOnMap.From}");
         }
 
         private void ClickSearchButton()
         {
+            spawnOnMap.To = null;
+            spawnOnMap.From = null;
             var root = SearchMenu[0].rootVisualElement;
             StartupMenu.rootVisualElement.style.display = DisplayStyle.None;
+            ViewMapMenu.rootVisualElement.style.display = DisplayStyle.None;
             root.style.display = DisplayStyle.Flex;
             root.Query<Button>().ForEach((button) =>
             {
@@ -82,27 +102,28 @@ namespace Samples.Runtime.Events
                 case "Building6Button":
                     SearchMenu[0].rootVisualElement.style.display = DisplayStyle.None;
                     // Creating a bunch of things to add to listview
-                    const int itemCount = 1000;
-                    var items = new List<string>(itemCount);
-                    for (int i = 1; i <= itemCount; i++)
-                        items.Add(i.ToString());
+                    //const int itemCount = 1000;
+                    //var items = new List<string>(itemCount);
+                    //foreach (var item in spawnOnMap.pathFinding.features)
+                    //{
+
+                    //}
                     // copy pasted code from https://docs.unity3d.com/Packages/com.unity.ui@1.0/api/UnityEngine.UIElements.ListView.html
-                    Func<VisualElement> makeItem = () => new Label();
-                    Action<VisualElement, int> bindItem = (e, i) => (e as Label).text = items[i];
-                    var listView = new ListView(items, 16, makeItem, bindItem);
-                    listView.selectionType = SelectionType.Multiple;
+                    //Func<VisualElement> makeItem = () => new Button();
+                    //Action<VisualElement, int> bindItem = (e, i) => (e as Button).text = items[i];
+                    //var listView = new ListView(items, 16, makeItem, bindItem);
+                    //listView.selectionType = SelectionType.Multiple;
 
-                    listView.onItemsChosen += objects => Debug.Log(objects);
-                    listView.onSelectionChange += objects => Debug.Log(objects);
+                    //listView.onItemsChosen += objects => Debug.Log(objects);
+                    //listView.onSelectionChange += objects => Debug.Log(objects);
 
-                    listView.style.flexGrow = 1.0f;
+                    //listView.style.flexGrow = 1.0f;
                     // added listview and buttons show but cant find then when inspecting code
-                    SearchMenu[1].rootVisualElement.Add(listView);
-                    SearchMenu[1].rootVisualElement.Add(button);
-                    SearchMenu[1].rootVisualElement.Add(button);
+
+                    //SearchMenu[1].rootVisualElement.Add(listView);
                     SearchMenu[1].rootVisualElement.style.display = DisplayStyle.Flex;
                     break;
-                    
+
                 default:
                     break;
             }
@@ -123,12 +144,17 @@ namespace Samples.Runtime.Events
             {
                 button.clickable.clickedWithEventInfo += ClickEndRoom;
             });
+            //Log.Information($"To changed to {spawnOnMap.To}");
         }
         private void ClickEndRoom(EventBase info)
         {
+            ClickViewMapButton();
             Button button = info.target as Button;
             spawnOnMap.To = button.name;
             SearchMenu[2].rootVisualElement.style.display = DisplayStyle.None;
+            ViewMapMenu.rootVisualElement.style.display = DisplayStyle.Flex;
+            //Log.Information($"From changed to {spawnOnMap.From}");
+
         }
 
         void Update()

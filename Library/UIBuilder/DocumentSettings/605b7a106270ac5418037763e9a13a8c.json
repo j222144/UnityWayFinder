@@ -1,10 +1,10 @@
 {
     "UxmlGuid": "605b7a106270ac5418037763e9a13a8c",
     "UxmlPath": "Assets/WayFinderUI/Test/StartSearch.uxml",
-    "CanvasX": 0,
+    "CanvasX": 190,
     "CanvasY": 0,
-    "CanvasWidth": 660,
-    "CanvasHeight": 654,
+    "CanvasWidth": 470,
+    "CanvasHeight": 561,
     "MatchGameView": false,
     "ZoomScale": 1.0,
     "PanOffset": {

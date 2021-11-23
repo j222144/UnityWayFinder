@@ -20,10 +20,10 @@ ScriptsOnlyBuild:
     - Mapbox.Unity.Utilities.DebugTools.SceneData
     - Mapbox.Unity.Utilities.DebugTools.ScenesList
     - Mapbox.Unity.Utilities.Runnable
-    - PanelManager
     - Samples.Runtime.Events.ClickEventSample
     - ScriptablePalette
     - SpawnOnMap
+    - testScript
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
@@ -45,10 +45,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.TextCoreTextEngineModule.dll:
     - UnityEngine.TextCore.Text.FontAsset
-    - UnityEngine.TextCore.Text.SpriteAsset
-    - UnityEngine.TextCore.Text.TextColorGradient
-    - UnityEngine.TextCore.Text.TextStyleSheet
     UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.HorizontalLayoutGroup
@@ -85,8 +84,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 84
-      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 95
@@ -108,73 +105,67 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1634}
     - Class: 114
-      Script: {instanceID: 1726}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 1800}
+      Script: {instanceID: 1794}
     - Class: 114
-      Script: {instanceID: 1802}
+      Script: {instanceID: 1896}
     - Class: 114
-      Script: {instanceID: 1904}
+      Script: {instanceID: 2244}
     - Class: 114
-      Script: {instanceID: 1930}
+      Script: {instanceID: 2510}
     - Class: 114
-      Script: {instanceID: 2262}
+      Script: {instanceID: 2544}
     - Class: 114
-      Script: {instanceID: 2538}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2578}
+      Script: {instanceID: 2804}
     - Class: 114
-      Script: {instanceID: 2842}
+      Script: {instanceID: 3222}
     - Class: 114
-      Script: {instanceID: 3264}
+      Script: {instanceID: 3308}
     - Class: 114
-      Script: {instanceID: 3350}
+      Script: {instanceID: 3412}
     - Class: 114
-      Script: {instanceID: 3456}
+      Script: {instanceID: 3606}
     - Class: 114
-      Script: {instanceID: 3566}
+      Script: {instanceID: 3964}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 3662}
+      Script: {instanceID: 4178}
     - Class: 114
-      Script: {instanceID: 4010}
+      Script: {instanceID: 4306}
     - Class: 114
-      Script: {instanceID: 4096}
+      Script: {instanceID: 4576}
     - Class: 114
-      Script: {instanceID: 4226}
+      Script: {instanceID: 5292}
     - Class: 114
-      Script: {instanceID: 4354}
+      Script: {instanceID: 5312}
     - Class: 114
-      Script: {instanceID: 4632}
+      Script: {instanceID: 5522}
     - Class: 114
-      Script: {instanceID: 5364}
+      Script: {instanceID: 5686}
     - Class: 114
-      Script: {instanceID: 5384}
+      Script: {instanceID: 5780}
     - Class: 114
-      Script: {instanceID: 5530}
+      Script: {instanceID: 5838}
     - Class: 114
-      Script: {instanceID: 5598}
+      Script: {instanceID: 5876}
     - Class: 114
-      Script: {instanceID: 5764}
+      Script: {instanceID: 6326}
     - Class: 114
-      Script: {instanceID: 5858}
+      Script: {instanceID: 6346}
     - Class: 114
-      Script: {instanceID: 5916}
+      Script: {instanceID: 6476}
     - Class: 114
-      Script: {instanceID: 5954}
+      Script: {instanceID: 6964}
     - Class: 114
-      Script: {instanceID: 6412}
+      Script: {instanceID: 7078}
     - Class: 114
-      Script: {instanceID: 6432}
+      Script: {instanceID: 7296}
     - Class: 114
-      Script: {instanceID: 6482}
-    - Class: 114
-      Script: {instanceID: 7064}
-    - Class: 114
-      Script: {instanceID: 7178}
-    - Class: 114
-      Script: {instanceID: 7400}
+      Script: {instanceID: 7414}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -248,12 +239,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: SpriteSkin
-  - hash:
-      serializedVersion: 2
-      Hash: f767bf0934e4f94fe4a37e6cd57fd439
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Text
-    className: AlignmentTags
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -346,12 +331,6 @@ ScriptsOnlyBuild:
     className: HeroBuildingSelectionUserInput
   - hash:
       serializedVersion: 2
-      Hash: a943f4d6ec51d32822c5b9e96dfbba8f
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Rendering
-    className: RenderTextureBackgroundDemo
-  - hash:
-      serializedVersion: 2
       Hash: d30406e93dfde99d69d2b1c0ea2559b1
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.Location
@@ -392,12 +371,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.PixelPerfect.dll
     namespaceName: UnityEngine.U2D
     className: CinemachinePixelPerfect
-  - hash:
-      serializedVersion: 2
-      Hash: 2a698605bb2076e627af350851b8cf60
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Events
-    className: TouchMove
   - hash:
       serializedVersion: 2
       Hash: fc934a38e7a1eae57e2e54018b1d1f20
@@ -442,12 +415,6 @@ ScriptsOnlyBuild:
     className: PoiMarkerHelper
   - hash:
       serializedVersion: 2
-      Hash: 49a701ace111c9c64e6222f10611d537
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Events
-    className: PointerEvents
-  - hash:
-      serializedVersion: 2
       Hash: 42b2fdf293c62c25afaabcfdfd18a742
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Examples
@@ -464,12 +431,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.Map
     className: InitializeMapWithLocationProvider
-  - hash:
-      serializedVersion: 2
-      Hash: f767bf0934e4f94fe4a37e6cd57fd439
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Events
-    className: GeometryChanged
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -596,12 +557,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.MeshGeneration.Factories
     className: TerrainFactoryBase
-  - hash:
-      serializedVersion: 2
-      Hash: 4897f5a226d42459f106a93afe05a2dd
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Rendering
-    className: Rotator
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -838,16 +793,10 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 3877ae9d3cf603858a708308f5b45537
+      Hash: 36896993b29409c7e4d129908fcc8ece
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpawnOnMap
-  - hash:
-      serializedVersion: 2
-      Hash: 180ab71bfa0ffb9b206e4a294ff224e1
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Rendering
-    className: UITextureProjection
   - hash:
       serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
@@ -1024,12 +973,6 @@ ScriptsOnlyBuild:
     className: Runnable
   - hash:
       serializedVersion: 2
-      Hash: 5949eedcf4c64b716e68490cea48782a
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: 
-    className: ClickEventSample
-  - hash:
-      serializedVersion: 2
       Hash: 8216e0d9d4736e9dc25b08da6f4ffc65
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.MeshGeneration.Factories
@@ -1102,22 +1045,10 @@ ScriptsOnlyBuild:
     className: FeatureBehaviourModifier
   - hash:
       serializedVersion: 2
-      Hash: f767bf0934e4f94fe4a37e6cd57fd439
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Events
-    className: KeyboardEvents
-  - hash:
-      serializedVersion: 2
       Hash: fa90da47991d80f1858af300615876f4
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.MeshGeneration.Modifiers
     className: HeightModifier
-  - hash:
-      serializedVersion: 2
-      Hash: f767bf0934e4f94fe4a37e6cd57fd439
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Text
-    className: TextAssets
   - hash:
       serializedVersion: 2
       Hash: ba6ef9e2082e09d9399eaef28d94d812
@@ -1168,16 +1099,10 @@ ScriptsOnlyBuild:
     className: ReplaceFeatureCollectionModifier
   - hash:
       serializedVersion: 2
-      Hash: b6cbafa053ed341ed37333e55b5cd2ed
+      Hash: 6f2e067a820cc809b72847c34ed1a130
     assemblyName: Assembly-CSharp.dll
     namespaceName: Samples.Runtime.Events
     className: ClickEventSample
-  - hash:
-      serializedVersion: 2
-      Hash: 15d3f59d6c9512640cc33585bdf7357d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PanelManager
   - hash:
       serializedVersion: 2
       Hash: cafc9a3f06bf99131b68bf2b0f3c5c8b
@@ -1276,12 +1201,6 @@ ScriptsOnlyBuild:
     className: OpenUrlOnButtonClick
   - hash:
       serializedVersion: 2
-      Hash: f767bf0934e4f94fe4a37e6cd57fd439
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.Text
-    className: BasicStyleTags
-  - hash:
-      serializedVersion: 2
       Hash: c3ca68359ba3cdfb2598642816e97c83
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Examples
@@ -1360,12 +1279,6 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
-      Hash: 2a698605bb2076e627af350851b8cf60
-    assemblyName: Unity.UIElements.Samples.dll
-    namespaceName: Samples.Runtime.General
-    className: RootSelector
-  - hash:
-      serializedVersion: 2
       Hash: 2651b1956cb518e1f451b1aa7c38e941
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Examples
@@ -1436,6 +1349,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: testScript
   - hash:
       serializedVersion: 2
       Hash: 859ae13d9bec32322e7310e5882754d8
