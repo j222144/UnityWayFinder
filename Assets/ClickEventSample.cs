@@ -1,4 +1,3 @@
-//using Serilog;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +12,6 @@ namespace Samples.Runtime.Events
             Waiting,
             Active
         }
-
-        private const string ActiveClassName = "game-button--active";
 
         [SerializeField] private PanelSettings panelSettings = default;
         [SerializeField] private StyleSheet styleSheet = default;
@@ -32,16 +29,6 @@ namespace Samples.Runtime.Events
             StartupMenu.panelSettings = panelSettings;
         }
 
-        void Awake()
-        {
-            //Log.Logger = new LoggerConfiguration()
-            //    .MinimumLevel.Debug()
-            //    .WriteTo.Console()
-            //    .WriteTo.File("logs/logs.txt", rollingInterval: RollingInterval.Day)
-            //    .CreateLogger();
-            //StartupMenu.panelSettings = panelSettings;
-        }
-
         void OnEnable()
         {
             InitializeVisualTree(StartupMenu);
@@ -57,6 +44,7 @@ namespace Samples.Runtime.Events
             SearchBuildingbutton.clicked += ClickSearchButton;
             root.styleSheets.Add(styleSheet);
 
+            //hide all other menus
             foreach (var menu in SearchMenu)
             {
                 menu.rootVisualElement.style.display = DisplayStyle.None;
@@ -78,7 +66,7 @@ namespace Samples.Runtime.Events
         {
             spawnOnMap.To = null;
             spawnOnMap.From = null;
-            //Log.Information($"To changed to {spawnOnMap.To}, From changed to {spawnOnMap.From}");
+            Debug.Log($"To changed to {spawnOnMap.To}, From changed to {spawnOnMap.From}");
         }
 
         private void ClickSearchButton()
@@ -144,7 +132,7 @@ namespace Samples.Runtime.Events
             {
                 button.clickable.clickedWithEventInfo += ClickEndRoom;
             });
-            //Log.Information($"To changed to {spawnOnMap.To}");
+            Debug.Log($"From changed to {spawnOnMap.From}");
         }
         private void ClickEndRoom(EventBase info)
         {
@@ -153,7 +141,7 @@ namespace Samples.Runtime.Events
             spawnOnMap.To = button.name;
             SearchMenu[2].rootVisualElement.style.display = DisplayStyle.None;
             ViewMapMenu.rootVisualElement.style.display = DisplayStyle.Flex;
-            //Log.Information($"From changed to {spawnOnMap.From}");
+            Debug.Log($"To changed to {spawnOnMap.To}");
 
         }
 

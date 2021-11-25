@@ -13,7 +13,6 @@
 -a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Library\PlayerScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll"
 -a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Library\PlayerScriptAssemblies\Unity.2D.Animation.Runtime.dll"
 -a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Library\PlayerScriptAssemblies\Unity.2D.Common.Runtime.dll"
--a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Library\PlayerScriptAssemblies\Unity.Notifications.Android.dll"
 -a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Library\PlayerScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll"
 -a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\AOT\Newtonsoft.Json.dll"
 -a="D:\Coding\TAFE\WayFinder\UnityWayfinder\Assets\Mapbox\Core\Plugins\Mapbox\MapboxAccounts\net4x\MapboxAccountsUnity.dll"

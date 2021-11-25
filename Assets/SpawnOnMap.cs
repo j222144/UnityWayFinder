@@ -37,6 +37,7 @@ public class SpawnOnMap : MonoBehaviour
         LineRenderer line = gameObject.AddComponent<LineRenderer>();
         
         line.material = new Material(Shader.Find("Sprites/Default"));
+        line.startColor = new Color(126f/255f, 189f/255f, 194f/255f);
         line.startWidth = 0.7f;
         line.endWidth = 0.7f;
     }
